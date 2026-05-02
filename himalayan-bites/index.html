@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Himalayan Bites – Authentic Nepali Restaurant</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* =========================================================
+       CSS CUSTOM PROPERTIES
+    ========================================================= */
+    :root {
+      --primary:       #8B0000;
+      --primary-dark:  #5C0000;
+      --primary-light: #A52020;
+      --accent:        #D4A017;
+      --accent-light:  #E8BE45;
+      --bg-cream:      #FFF8F0;
+      --bg-gray:       #F5F5F5;
+      --text-dark:     #333333;
+      --text-gray:     #666666;
+      --white:         #FFFFFF;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body:    'Lato', sans-serif;
+
+      --transition: 0.3s ease;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 32px rgba(139,0,0,0.12);
+      --shadow-hover: 0 16px 48px rgba(139,0,0,0.18);
+    }
+
+    /* =========================================================
+       GLOBAL RESET & BASE
+    ========================================================= */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-heading);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* =========================================================
+       SECTION HELPERS
+    ========================================================= */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .gold-divider {
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0.75rem auto 0;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    #main-nav {
+      background: var(--white);
+      border-bottom: 2px solid var(--accent);
+      padding: 0.9rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: box-shadow var(--transition);
+    }
+
+    /* Logo */
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary) !important;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .navbar-brand span {
+      color: var(--accent);
+    }
+
+    /* Nav links */
+    .navbar-nav .nav-link {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dark) !important;
+      padding: 0.5rem 1rem !important;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary) !important;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    /* Hamburger */
+    .navbar-toggler {
+      border: 2px solid var(--primary);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%238B0000' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* =========================================================
+       HERO SECTION
+    ========================================================= */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1600')
+        center center / cover no-repeat;
+    }
+
+    /* Subtle warm vignette at bottom */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(139,0,0,0.25) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 2rem 1.5rem;
+      animation: heroFadeUp 1s ease both;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-kicker {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2.2rem;
+      line-height: 1.7;
+    }
+
+    /* Hero buttons */
+    .btn-hero-primary {
+      background: var(--primary);
+      color: var(--white);
+      border: 2px solid var(--primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,0,0,0.4);
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.85);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* =========================================================
+       FEATURED MENU SECTION
+    ========================================================= */
+    #menu {
+      background: var(--bg-cream);
+      padding: 100px 0 110px;
+    }
+
+    #menu .section-heading {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    #menu .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--primary);
+      margin-top: 0.5rem;
+    }
+
+    /* Menu cards */
+    .menu-card {
+      background: var(--white);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      height: 100%;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .menu-card-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .menu-card:hover .menu-card-img {
+      transform: scale(1.04);
+    }
+
+    .menu-card-img-wrap {
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .menu-card-body {
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
+
+    .menu-card-name {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .menu-card-desc {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .menu-card-price {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    /* =========================================================
+       ABOUT SECTION
+    ========================================================= */
+    #about {
+      background: var(--white);
+      padding: 100px 0 110px;
+    }
+
+    .about-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 2rem;
+    }
+
+    .about-content h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      color: var(--primary);
+      line-height: 1.25;
+      margin: 0.5rem 0 1.2rem;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    /* Stats */
+    .stat-box {
+      text-align: center;
+      padding: 1.1rem 0.5rem;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--bg-cream);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* =========================================================
+       CONTACT SECTION
+    ========================================================= */
+    #contact {
+      background: var(--bg-gray);
+      padding: 100px 0 110px;
+    }
+
+    #contact .section-heading {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    #contact .section-heading h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      color: var(--primary);
+      margin-top: 0.5rem;
+    }
+
+    /* Contact form */
+    .contact-form-wrap {
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .form-label {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      border: none;
+      border-bottom: 2px solid #ddd;
+      border-radius: 0;
+      background: transparent;
+      padding: 0.7rem 0;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      transition: border-color var(--transition);
+      box-shadow: none !important;
+    }
+
+    .form-control:focus {
+      border-bottom-color: var(--accent);
+      background: transparent;
+      outline: none;
+    }
+
+    .form-control::placeholder {
+      color: #aaa;
+      font-weight: 300;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      border: 2px solid var(--primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      margin-top: 1.8rem;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,0,0,0.35);
+    }
+
+    /* Contact info blocks */
+    .contact-info-item {
+      text-align: center;
+    }
+
+    .contact-info-icon {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-info-value {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--primary-dark);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-copyright {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .footer-social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       RESPONSIVE OVERRIDES
+    ========================================================= */
+    @media (max-width: 991px) {
+      .about-content {
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+
+      .about-img {
+        height: 340px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #hero .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-inner .d-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-img {
+        height: 260px;
+      }
+    }
+
+    /* =========================================================
+       UTILITY: gold underline separator for section headings
+    ========================================================= */
+    .gold-line {
+      display: inline-block;
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
+  <nav id="main-nav" class="navbar navbar-expand-lg">
+    <div class="container">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#hero">
+        Himalayan <span>Bites</span>
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav gap-1 py-2 py-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- =====================================================
+       HERO SECTION
+  ===================================================== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="hero-kicker">Welcome to Himalayan Bites</span>
+      <h1 class="hero-title">Authentic Nepali Flavors</h1>
+      <p class="hero-subtitle">
+        Fresh ingredients, traditional recipes, served with love<br class="d-none d-md-inline" />
+        in an atmosphere that feels like home.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="#menu"    class="btn-hero-primary">View Menu</a>
+        <a href="#contact" class="btn-hero-outline">Reserve a Table</a>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <a href="#menu" class="scroll-cue" aria-label="Scroll down">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+
+  <!-- =====================================================
+       FEATURED MENU SECTION
+  ===================================================== -->
+  <section id="menu">
+    <div class="container">
+
+      <!-- Heading -->
+      <div class="section-heading">
+        <span class="section-label">From Our Kitchen</span>
+        <h2>Our Specialties</h2>
+        <div class="d-flex justify-content-center mt-2">
+          <span class="gold-line"></span>
+        </div>
+      </div>
+
+      <!-- Cards Row -->
+      <div class="row g-4">
+
+        <!-- Card 1: Momo -->
+        <div class="col-12 col-md-4">
+          <div class="menu-card">
+            <div class="menu-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600"
+                alt="Momo – Nepali Dumplings"
+                class="menu-card-img"
+              />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-name">Momo</div>
+              <p class="menu-card-desc">Steamed dumplings with spiced meat filling, served with signature achar.</p>
+              <div class="menu-card-price">NPR 200</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Dal Bhat -->
+        <div class="col-12 col-md-4">
+          <div class="menu-card">
+            <div class="menu-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600"
+                alt="Dal Bhat – Lentil Soup with Rice"
+                class="menu-card-img"
+              />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-name">Dal Bhat</div>
+              <p class="menu-card-desc">Traditional lentil soup with steamed rice, seasonal vegetables and pickles.</p>
+              <div class="menu-card-price">NPR 350</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Thukpa -->
+        <div class="col-12 col-md-4">
+          <div class="menu-card">
+            <div class="menu-card-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1628410040883-c412c8d9a0f9?w=600"
+                alt="Thukpa – Tibetan Noodle Soup"
+                class="menu-card-img"
+              />
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-name">Thukpa</div>
+              <p class="menu-card-desc">Hearty Tibetan noodle soup with vegetables, herbs, and warming spices.</p>
+              <div class="menu-card-price">NPR 250</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- =====================================================
+       ABOUT SECTION
+  ===================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+
+        <!-- Left: Image -->
+        <div class="col-12 col-lg-6">
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800"
+            alt="Warm restaurant interior"
+            class="about-img"
+          />
+        </div>
+
+        <!-- Right: Content -->
+        <div class="col-12 col-lg-6">
+          <div class="about-content">
+            <span class="section-label">Our Story</span>
+            <h2>15 Years of Authentic Taste</h2>
+            <p>
+              We started Himalayan Bites in 2010 with one goal: to bring the real taste of Nepal
+              to every plate. Every dish is made fresh daily using traditional recipes passed down
+              through generations, crafted with locally sourced ingredients and authentic Himalayan spices.
+            </p>
+
+            <!-- Stats -->
+            <div class="row g-3">
+              <div class="col-4">
+                <div class="stat-box">
+                  <div class="stat-number">15<sup style="font-size:1rem">+</sup></div>
+                  <div class="stat-label">Years</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-box">
+                  <div class="stat-number">50<sup style="font-size:1rem">+</sup></div>
+                  <div class="stat-label">Dishes</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-box">
+                  <div class="stat-number" style="font-size:1.6rem">10k<sup style="font-size:0.9rem">+</sup></div>
+                  <div class="stat-label">Customers</div>
+                </div>
+              </div>
+            </div><!-- /row stats -->
+
+          </div><!-- /about-content -->
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- =====================================================
+       CONTACT & BOOK SECTION
+  ===================================================== -->
+  <section id="contact">
+    <div class="container">
+
+      <!-- Heading -->
+      <div class="section-heading">
+        <span class="section-label">Find Us</span>
+        <h2>Visit Us or Book a Table</h2>
+        <div class="d-flex justify-content-center mt-2">
+          <span class="gold-line"></span>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap">
+        <div class="row g-4">
+
+          <div class="col-12 col-sm-6">
+            <label for="contactName" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contactName"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="contactEmail"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="contactMessage" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="contactMessage"
+              placeholder="How can we help you? Reserve a table, catering enquiries…"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <button type="button" class="btn-submit">Send Message</button>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="row g-4 justify-content-center" style="max-width:700px; margin:0 auto;">
+
+        <div class="col-12 col-sm-4">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-value">123 Thamel Street<br />Kathmandu, Nepal</div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-4">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value">+977 9800000000</div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-4">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">
+              <a href="mailto:info@himalayanbites.com" style="color:inherit; text-decoration:none;">
+                info@himalayanbites.com
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /contact info row -->
+
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+  <footer>
+    <p class="footer-copyright">
+      &copy; 2025 Himalayan Bites. All rights reserved.
+    </p>
+    <div class="footer-socials">
+      <a href="#" class="footer-social-link" aria-label="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="#" class="footer-social-link" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* =========================================================
+       Active Nav Link on Scroll
+    ========================================================= */
+    (function () {
+      const sections  = document.querySelectorAll('section[id]');
+      const navLinks  = document.querySelectorAll('.navbar-nav .nav-link');
+
+      function onScroll() {
+        let current = '';
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 80;
+          if (window.scrollY >= top) current = sec.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    /* =========================================================
+       Close mobile nav on link click
+    ========================================================= */
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const collapse = document.getElementById('navMenu');
+        if (collapse.classList.contains('show')) {
+          bootstrap.Collapse.getInstance(collapse)?.hide();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

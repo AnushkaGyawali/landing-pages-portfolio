@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IronEdge Fitness</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* ─── Global Reset & Base ──────────────────────────────────────────────── */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Oswald', sans-serif;
+    }
+
+    /* ─── Utility ──────────────────────────────────────────────────────────── */
+    .text-orange   { color: #ff5722 !important; }
+    .bg-orange     { background-color: #ff5722 !important; }
+    .border-orange { border-color: #ff5722 !important; }
+    .text-subtle   { color: #aaaaaa; }
+
+    .btn-orange {
+      background-color: #ff5722;
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 2px solid #ff5722;
+      border-radius: 4px;
+      padding: 12px 32px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-orange:hover {
+      background-color: #e64a19;
+      border-color: #e64a19;
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(255, 87, 34, 0.5);
+    }
+
+    .btn-outline-light-custom {
+      background-color: transparent;
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 2px solid #ffffff;
+      border-radius: 4px;
+      padding: 12px 32px;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-outline-light-custom:hover {
+      background-color: #ff5722;
+      border-color: #ff5722;
+      color: #ffffff;
+    }
+
+    /* ─── Navigation ───────────────────────────────────────────────────────── */
+    #navbar {
+      background-color: #0d0d0d;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .navbar-brand .brand-iron  { color: #ff5722; }
+    .navbar-brand .brand-edge  { color: #ff5722; }
+    .navbar-brand .brand-fitness { color: #ffffff; margin-left: 6px; }
+
+    .navbar-nav .nav-link {
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #ff5722;
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 4px;
+    }
+
+    .navbar-toggler-icon-custom {
+      color: #ff5722;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    /* ─── Hero Section ─────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #ff5722;
+      margin-bottom: 20px;
+    }
+
+    .hero-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 80px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-heading { font-size: 48px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-heading { font-size: 36px; }
+    }
+
+    /* ─── Programs Section ─────────────────────────────────────────────────── */
+    #programs {
+      background-color: #111111;
+      padding: 80px 0;
+    }
+
+    .section-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      font-family: 'Roboto', sans-serif;
+      color: #aaaaaa;
+      font-size: 1rem;
+      margin-bottom: 60px;
+    }
+
+    .program-card {
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 40px 32px;
+      height: 100%;
+      border: 1px solid #262626;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .program-card:hover {
+      box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .program-card .icon {
+      font-size: 48px;
+      color: #ff5722;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .program-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .program-card p {
+      font-family: 'Roboto', sans-serif;
+      color: #aaaaaa;
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .btn-outline-orange {
+      background-color: transparent;
+      color: #ff5722;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 2px solid #ff5722;
+      border-radius: 4px;
+      padding: 10px 28px;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-outline-orange:hover {
+      background-color: #ff5722;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 87, 34, 0.45);
+    }
+
+    /* ─── Pricing Section ──────────────────────────────────────────────────── */
+    #pricing {
+      background-color: #0d0d0d;
+      padding: 80px 0;
+    }
+
+    .pricing-card {
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid #262626;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      box-shadow: 0 0 24px rgba(255, 87, 34, 0.25);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid #ff5722;
+      transform: scale(1.05);
+      z-index: 2;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: #ff5722;
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+    }
+
+    .pricing-plan-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: #aaaaaa;
+      font-weight: 400;
+    }
+
+    .pricing-divider {
+      border-color: #262626;
+      margin: 24px 0;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      font-family: 'Roboto', sans-serif;
+      color: #dddddd;
+      font-size: 0.95rem;
+      padding: 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-features li i {
+      color: #ff5722;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── Contact Section ──────────────────────────────────────────────────── */
+    #contact {
+      background-color: #111111;
+      padding: 80px 0;
+    }
+
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-control-dark {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid #333333;
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+    }
+
+    .form-control-dark::placeholder { color: #666666; }
+
+    .form-control-dark:focus {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border-color: #ff5722;
+      box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+      outline: none;
+    }
+
+    .form-control-dark option {
+      background-color: #1a1a1a;
+      color: #ffffff;
+    }
+
+    .form-label-dark {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      color: #aaaaaa;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .contact-info-item i {
+      color: #ff5722;
+      font-size: 1.1rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* ─── Footer ───────────────────────────────────────────────────────────── */
+    #footer {
+      background-color: #000000;
+      padding: 40px 0 30px;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .social-icon {
+      color: #ff5722;
+      font-size: 1.3rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-icon:hover {
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .footer-copy {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8rem;
+      color: #555555;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Responsive tweaks ────────────────────────────────────────────────── */
+    @media (max-width: 767px) {
+      .pricing-card.featured {
+        transform: scale(1);
+        margin-top: 12px;
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 1 – NAVIGATION
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="navbar navbar-expand-lg">
+    <div class="container-xl">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <span class="brand-iron">Iron</span><span class="brand-edge">Edge</span>
+        <span class="brand-fitness">Fitness</span>
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon-custom">
+          <i class="fas fa-bars text-orange"></i>
+        </span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-orange ms-lg-3 mt-3 mt-lg-0">Join Now</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 2 – HERO
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="container text-center">
+      <p class="hero-eyebrow">Welcome to IronEdge Fitness</p>
+      <h1 class="hero-heading">PUSH BEYOND<br>YOUR LIMITS</h1>
+      <p class="hero-subtitle">Transform your body. Build your strength. Start today.</p>
+      <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+        <a href="#contact" class="btn btn-orange px-4 py-3">Get Started</a>
+        <a href="#programs" class="btn btn-outline-light-custom px-4 py-3">View Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 3 – PROGRAMS
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="programs">
+    <div class="container-xl">
+      <div class="text-center">
+        <h2 class="section-heading">Our Programs</h2>
+        <p class="section-subtitle">Find the right program for your fitness goals</p>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Card 1 – Strength Training -->
+        <div class="col-12 col-md-4">
+          <div class="program-card">
+            <i class="fas fa-dumbbell icon"></i>
+            <h3>Strength Training</h3>
+            <p>Build muscle and increase power with our structured weight training programs designed for all levels.</p>
+            <a href="#contact" class="btn btn-outline-orange">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Card 2 – HIIT Cardio -->
+        <div class="col-12 col-md-4">
+          <div class="program-card">
+            <i class="fas fa-fire icon"></i>
+            <h3>HIIT Cardio</h3>
+            <p>Burn fat fast with high intensity interval training sessions that push your limits every single time.</p>
+            <a href="#contact" class="btn btn-outline-orange">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Card 3 – Personal Training -->
+        <div class="col-12 col-md-4">
+          <div class="program-card">
+            <i class="fas fa-user icon"></i>
+            <h3>Personal Training</h3>
+            <p>One on one sessions with certified trainers who build a custom plan around your specific fitness goals.</p>
+            <a href="#contact" class="btn btn-outline-orange">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 4 – PRICING
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="pricing">
+    <div class="container-xl">
+      <div class="text-center">
+        <h2 class="section-heading">Simple Pricing</h2>
+        <p class="section-subtitle">No hidden fees. Cancel anytime.</p>
+      </div>
+
+      <div class="row g-4 align-items-center justify-content-center">
+
+        <!-- Basic Plan -->
+        <div class="col-12 col-md-4">
+          <div class="pricing-card">
+            <p class="pricing-plan-name">Basic Plan</p>
+            <div class="pricing-price">$29<span>/month</span></div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Gym access</li>
+              <li><i class="fas fa-check-circle"></i> Locker room</li>
+              <li><i class="fas fa-check-circle"></i> Group classes</li>
+            </ul>
+            <a href="#contact" class="btn btn-orange w-100">Choose Plan</a>
+          </div>
+        </div>
+
+        <!-- Pro Plan (featured) -->
+        <div class="col-12 col-md-4">
+          <div class="pricing-card featured">
+            <span class="pricing-badge">Most Popular</span>
+            <p class="pricing-plan-name">Pro Plan</p>
+            <div class="pricing-price">$49<span>/month</span></div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+              <li><i class="fas fa-check-circle"></i> Personal trainer 2x/month</li>
+              <li><i class="fas fa-check-circle"></i> Nutrition guide</li>
+            </ul>
+            <a href="#contact" class="btn btn-orange w-100">Choose Plan</a>
+          </div>
+        </div>
+
+        <!-- Elite Plan -->
+        <div class="col-12 col-md-4">
+          <div class="pricing-card">
+            <p class="pricing-plan-name">Elite Plan</p>
+            <div class="pricing-price">$79<span>/month</span></div>
+            <hr class="pricing-divider" />
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Everything in Pro</li>
+              <li><i class="fas fa-check-circle"></i> Unlimited personal training</li>
+              <li><i class="fas fa-check-circle"></i> Diet meal plan</li>
+            </ul>
+            <a href="#contact" class="btn btn-orange w-100">Choose Plan</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SECTION 5 – CONTACT
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-heading">Start Your Journey Today</h2>
+        <p class="section-subtitle mb-0">Fill out the form and our team will contact you within 24 hours.</p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <form novalidate>
+          <div class="mb-4">
+            <label class="form-label-dark" for="name">Full Name</label>
+            <input type="text" id="name" class="form-control-dark" placeholder="John Smith" />
+          </div>
+          <div class="mb-4">
+            <label class="form-label-dark" for="email">Email Address</label>
+            <input type="email" id="email" class="form-control-dark" placeholder="john@example.com" />
+          </div>
+          <div class="mb-4">
+            <label class="form-label-dark" for="phone">Phone Number</label>
+            <input type="tel" id="phone" class="form-control-dark" placeholder="+1 (555) 000-0000" />
+          </div>
+          <div class="mb-4">
+            <label class="form-label-dark" for="goal">Your Goal</label>
+            <select id="goal" class="form-control-dark">
+              <option value="" disabled selected>Select your goal</option>
+              <option value="lose-weight">Lose Weight</option>
+              <option value="build-muscle">Build Muscle</option>
+              <option value="get-fit">Get Fit</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-orange w-100 py-3"
+                  style="font-size:1rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;">
+            Get Started Now
+          </button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-4 mt-5 pt-2">
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Iron Street, New York, NY</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 (800) 555-4567</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <span>hello@ironedge.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="container text-center">
+
+      <!-- Social Icons -->
+      <div class="d-flex justify-content-center gap-4 mb-4">
+        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <p class="footer-copy mb-0">
+        &copy; 2025 IronEdge Fitness. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
