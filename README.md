@@ -20,7 +20,7 @@ This repository contains every landing page I have built as part of my freelance
 ## Projects
 
 | S.N | Project | Industry | Live Preview |
-|---|---------|----------|------------|--------------|
+|---|---------|----------|--------------|
 | 01 | Himalayan Bites | Restaurant | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/himalayan-bites/) |
 | 02 | Alex Morgan Portfolio | Personal Portfolio | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/alex-morgan/) |
 | 03 | IronEdge Fitness | Gym | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/ironedge/) |
