@@ -1,7 +1,7 @@
 # From Brief to Browser — Landing Page Portfolio
 
 > A curated collection of 8 responsive landing pages built from real-world business briefs.
-> Designed with Google Stitch. Developed with HTML, CSS, Bootstrap 5, and JavaScript.
+> Developed with HTML, CSS, Bootstrap 5, and JavaScript.
 
 ---
 
@@ -14,8 +14,6 @@
 ## About This Repository
 
 This repository contains every landing page I have built as part of my freelance web development portfolio. Each project was created from a fictional real-world business brief covering a different industry. Every page is fully responsive, built with clean code, and deployed live via GitHub Pages.
-
-All projects were designed first using **Google Stitch** for UI mockups, then developed using **Claude AI** as a coding assistant, with manual review, customization, and quality checking done by me.
 
 ---
 
@@ -177,7 +175,7 @@ No build tools, no npm, no dependencies. Every file is plain HTML and opens dire
 6. Select folder: / (root)
 7. Click Save
 8. Wait 2 to 3 minutes
-9. Your site is live at https://anushkagyawali.github.io/landing-pages-portfolio/
+9. Your site is live
 ```
 
 ---
