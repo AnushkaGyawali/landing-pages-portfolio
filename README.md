@@ -21,16 +21,16 @@ All projects were designed first using **Google Stitch** for UI mockups, then de
 
 ## Projects
 
-| # | Project | Industry | Difficulty | Live Preview |
+| S.N | Project | Industry | Live Preview |
 |---|---------|----------|------------|--------------|
-| 01 | Himalayan Bites | Restaurant | ⭐⭐ Easy | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/himalayan-bites/) |
-| 02 | Alex Morgan Portfolio | Personal Portfolio | ⭐⭐⭐ Medium | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/alex-morgan/) |
-| 03 | IronEdge Fitness | Gym | ⭐⭐⭐ Medium | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/ironedge/) |
-| 04 | ScanForm — NestFinder Realty | Real Estate | ⭐⭐ Easy | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/scanform/) |
-| 05 | EduReach Academy | Education | ⭐⭐⭐ Medium | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/edureachacademy/) |
-| 06 | FlexPack Co. | B2B Packaging | ⭐⭐⭐ Medium | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/flexpack/) |
-| 07 | ThreadMark | Streetwear Fashion | ⭐⭐ Easy-Medium | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/threadmark/) |
-| 08 | BrightPage — James Harlow | Consulting | ⭐⭐ Easy | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/brightpage/) |
+| 01 | Himalayan Bites | Restaurant | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/himalayan-bites/) |
+| 02 | Alex Morgan Portfolio | Personal Portfolio | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/alex-morgan/) |
+| 03 | IronEdge Fitness | Gym | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/ironedge/) |
+| 04 | ScanForm — NestFinder Realty | Real Estate | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/scanform/) |
+| 05 | EduReach Academy | Education | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/edureachacademy/) |
+| 06 | FlexPack Co. | B2B Packaging | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/flexpack/) |
+| 07 | ThreadMark | Streetwear Fashion | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/threadmark/) |
+| 08 | BrightPage — James Harlow | Consulting | [View Live](https://anushkagyawali.github.io/landing-pages-portfolio/brightpage/) |
 
 ---
 
@@ -184,11 +184,11 @@ No build tools, no npm, no dependencies. Every file is plain HTML and opens dire
 
 ## Freelance Services
 
-These projects represent the kind of work I offer on Fiverr. If you need a responsive landing page for your business, visit my Fiverr profile.
+These projects represent the kind of work I offer on Fiverr and Upwork. If you need a responsive landing page for your business, visit my Fiverr and Upwork profile.
 
 **Fiverr:** [fiverr.com/anushkagyawali](https://www.fiverr.com/anushkagyawali)
 **Upwork:** [Anushka Gyawali on Upwork](https://www.upwork.com/freelancers/~010da65480aa2f2a26?mp_source=share)
-**Email:** anuakhsuna@gmail.com
+**Email:** gyawalianushka@gmail.com
 
 ---
 
