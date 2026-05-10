@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduReach Academy — Crack Your Entrance Exam</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome 6 CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS & ROOT
+    ============================================= */
+    :root {
+      --blue-primary:  #1A237E;
+      --blue-light:    #E8EAF6;
+      --amber:         #FFB300;
+      --amber-dark:    #E65100;
+      --bg-white:      #FFFFFF;
+      --bg-gray:       #F5F5F5;
+      --text-dark:     #212121;
+      --text-gray:     #616161;
+      --white:         #FFFFFF;
+    }
+
+    /* =============================================
+       GLOBAL
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      overflow-x: hidden;
+    }
+
+    /* Reveal animation base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       SECTION 1 — NAVBAR
+    ============================================= */
+    #mainNav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: box-shadow 0.3s, border-bottom 0.3s;
+    }
+    #mainNav.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+      border-bottom: 1px solid var(--blue-primary);
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navbar-brand .brand-icon {
+      color: var(--amber);
+      font-size: 22px;
+    }
+    .navbar-brand .brand-name {
+      color: var(--blue-primary);
+      font-weight: 700;
+    }
+    .navbar-brand .brand-suffix {
+      color: var(--text-gray);
+      font-weight: 400;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-dark) !important;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px !important;
+      transition: color 0.2s;
+    }
+    .navbar-nav .nav-link:hover {
+      color: var(--blue-primary) !important;
+    }
+
+    .btn-enroll-nav {
+      background: var(--amber);
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 20px;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .btn-enroll-nav:hover {
+      background: var(--amber-dark);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* =============================================
+       SECTION 2 — HERO
+    ============================================= */
+    #hero {
+      min-height: 90vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600');
+      background-size: cover;
+      background-position: center;
+    }
+    #hero .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,35,126,0.88) 0%, rgba(13,71,161,0.75) 100%);
+    }
+    #hero .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    /* Hero badge pill */
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,179,0,0.6);
+      color: var(--amber);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    /* Hero heading */
+    .hero-heading {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+    .hero-heading .amber-period { color: var(--amber); }
+
+    @media (max-width: 768px) {
+      .hero-heading { font-size: 36px; }
+    }
+
+    /* Hero paragraph */
+    .hero-para {
+      color: rgba(255,255,255,0.88);
+      font-size: 17px;
+      font-weight: 400;
+      margin-top: 16px;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    /* Hero buttons */
+    .hero-btns { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-hero-primary {
+      background: var(--amber);
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-hero-primary:hover {
+      background: var(--amber-dark);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 6px;
+      border: 2px solid rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* Floating stat card */
+    .hero-stat-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-row:first-child { padding-top: 0; }
+    .stat-icon-wrap {
+      width: 48px;
+      height: 48px;
+      background: var(--blue-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .stat-icon-wrap i {
+      color: var(--blue-primary);
+      font-size: 20px;
+    }
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--blue-primary);
+      line-height: 1;
+    }
+    .stat-label {
+      color: var(--text-gray);
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       SECTION 3 — ABOUT
+    ============================================= */
+    #about { background: var(--white); padding: 90px 0; }
+
+    .about-img-wrap {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      display: block;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      left: 24px;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+    .about-badge i { color: var(--amber); font-size: 24px; }
+    .about-badge .badge-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .about-badge .badge-text span {
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+
+    /* About right */
+    .section-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-primary);
+      margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .section-heading .amber-text { color: var(--amber); }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--blue-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-icon i { color: var(--white); font-size: 13px; }
+    .feature-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+
+    .btn-amber-solid {
+      background: var(--amber);
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-amber-solid:hover {
+      background: var(--amber-dark);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
+       SECTION 4 — COURSES
+    ============================================= */
+    #courses { background: var(--bg-gray); padding: 90px 0; }
+
+    .section-heading-lg {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Course card */
+    .course-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+    }
+    .course-card-inner {
+      padding: 28px;
+    }
+    .course-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .course-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    .course-card p {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    .course-duration {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue-primary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 16px;
+    }
+    .btn-course {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      background: transparent;
+      border: 2px solid;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    /* Card accent colors */
+    .card-red   { border-top: 4px solid #E53935; }
+    .card-blue  { border-top: 4px solid #1565C0; }
+    .card-green { border-top: 4px solid #2E7D32; }
+    .card-orange{ border-top: 4px solid #E65100; }
+
+    .icon-bg-red    { background: rgba(229,57,53,0.1);  }
+    .icon-bg-blue   { background: rgba(21,101,192,0.1); }
+    .icon-bg-green  { background: rgba(46,125,50,0.1);  }
+    .icon-bg-orange { background: rgba(230,81,0,0.1);   }
+
+    .icon-red    { color: #E53935; }
+    .icon-blue   { color: #1565C0; }
+    .icon-green  { color: #2E7D32; }
+    .icon-orange { color: #E65100; }
+
+    .btn-course-red    { color: #E53935; border-color: #E53935; }
+    .btn-course-red:hover    { background: #E53935; color: #fff; }
+    .btn-course-blue   { color: #1565C0; border-color: #1565C0; }
+    .btn-course-blue:hover   { background: #1565C0; color: #fff; }
+    .btn-course-green  { color: #2E7D32; border-color: #2E7D32; }
+    .btn-course-green:hover  { background: #2E7D32; color: #fff; }
+    .btn-course-orange { color: #E65100; border-color: #E65100; }
+    .btn-course-orange:hover { background: #E65100; color: #fff; }
+
+    /* =============================================
+       SECTION 5 — WHY CHOOSE US
+    ============================================= */
+    #why { background: var(--blue-primary); padding: 80px 0; }
+
+    .why-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.3s;
+      height: 100%;
+    }
+    .why-box:hover { background: rgba(255,255,255,0.15); }
+    .why-icon-wrap {
+      width: 64px;
+      height: 64px;
+      background: rgba(255,179,0,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-size: 28px;
+    }
+    .why-icon-wrap i { color: var(--amber); }
+    .why-box h5 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    .why-box p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =============================================
+       SECTION 6 — TESTIMONIALS
+    ============================================= */
+    #testimonials { background: var(--white); padding: 90px 0; }
+
+    .testimonial-card {
+      background: var(--bg-gray);
+      border-radius: 12px;
+      padding: 32px;
+      transition: box-shadow 0.3s;
+      height: 100%;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .testimonial-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: left;
+      margin-right: 14px;
+    }
+    .testimonial-card .student-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+    .testimonial-card .student-course {
+      font-size: 12px;
+      color: var(--blue-primary);
+      font-weight: 600;
+    }
+    .clearfix::after { content: ''; display: table; clear: both; }
+    .stars { margin-top: 12px; }
+    .stars i { color: var(--amber); font-size: 14px; }
+    .testimonial-quote {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      font-style: italic;
+      margin-top: 16px;
+    }
+    .testimonial-result {
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue-primary);
+    }
+
+    /* =============================================
+       SECTION 7 — ENROLL FORM
+    ============================================= */
+    #contact { background: var(--blue-light); padding: 90px 0; }
+
+    .enroll-form-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(26,35,126,0.1);
+    }
+    .enroll-form-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--blue-primary);
+      margin-bottom: 24px;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .form-control, .form-select {
+      border: 1.5px solid #E0E0E0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      color: var(--text-dark);
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--blue-primary);
+      box-shadow: 0 0 0 3px rgba(26,35,126,0.1);
+      outline: none;
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--amber);
+      color: var(--text-dark);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-submit:hover {
+      background: var(--amber-dark);
+      color: var(--white);
+    }
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .form-secure {
+      font-size: 12px;
+      color: var(--text-gray);
+      text-align: center;
+      margin-top: 12px;
+    }
+    .form-secure i { margin-right: 5px; color: var(--blue-primary); }
+    .form-success {
+      display: none;
+      background: #E8F5E9;
+      border: 1px solid #A5D6A7;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2E7D32;
+      margin-top: 14px;
+      text-align: center;
+    }
+    .form-success.show { display: block; }
+
+    /* Trust badges */
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .trust-badge i { color: #2E7D32; font-size: 16px; flex-shrink: 0; }
+    .trust-badge span { font-size: 14px; color: var(--text-gray); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    #footer {
+      background: #0D1B6E;
+      padding: 48px 0 24px;
+    }
+    .footer-logo { font-size: 20px; text-decoration: none; }
+    .footer-logo .brand-icon { color: var(--amber); }
+    .footer-logo .brand-name { color: var(--white); font-weight: 700; }
+    .footer-logo .brand-suffix { color: rgba(255,255,255,0.6); font-weight: 400; }
+
+    .footer-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 12px;
+      line-height: 1.65;
+    }
+    .footer-socials { margin-top: 20px; display: flex; gap: 14px; }
+    .footer-socials a {
+      color: var(--white);
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--amber); }
+
+    .footer-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber); }
+
+    .footer-contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .footer-contact-row i {
+      color: var(--amber);
+      font-size: 14px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .footer-contact-row span {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .footer-divider {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+      padding-top: 20px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    /* =============================================
+       CENTERED SECTION HEADER HELPERS
+    ============================================= */
+    .center-section-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .center-section-label.blue  { color: var(--blue-primary); }
+    .center-section-label.white { color: rgba(255,255,255,0.7); }
+    .center-section-subtitle {
+      font-size: 16px;
+      color: var(--text-gray);
+    }
+
+    /* Utility */
+    @media (max-width: 991px) {
+      .about-img-wrap { margin-bottom: 56px; }
+      .hero-stat-card { margin-top: 40px; }
+    }
+    @media (max-width: 575px) {
+      .hero-heading { font-size: 32px; }
+      .section-heading { font-size: 28px; }
+      .section-heading-lg { font-size: 30px; }
+      #hero { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       SECTION 1 — NAVBAR
+  ============================================= -->
+  <nav id="mainNav" class="navbar navbar-expand-lg">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <i class="fa-solid fa-graduation-cap brand-icon"></i>
+        <span>
+          <span class="brand-name">EduReach</span><span class="brand-suffix"> Academy</span>
+        </span>
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a href="#contact" class="btn-enroll-nav">Enroll Now</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav><!-- /navbar -->
+
+
+  <!-- =============================================
+       SECTION 2 — HERO
+  ============================================= -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container py-5">
+        <div class="row align-items-center">
+
+          <!-- Left: headline + CTAs -->
+          <div class="col-lg-7">
+            <span class="hero-badge">
+              <i class="fa-solid fa-star me-1" style="font-size:10px;"></i>
+              Entrance Exam Preparation
+            </span>
+
+            <h1 class="hero-heading">
+              Your Dream<br>
+              College<br>
+              Starts Here<span class="amber-period">.</span>
+            </h1>
+
+            <p class="hero-para">
+              Join thousands of students who cracked their entrance exams
+              with EduReach Academy. Expert faculty, proven methods,
+              guaranteed results.
+            </p>
+
+            <div class="hero-btns">
+              <a href="#courses" class="btn-hero-primary smooth-scroll">
+                Explore Courses
+              </a>
+              <a href="#contact" class="btn-hero-outline smooth-scroll">
+                Free Counseling
+              </a>
+            </div>
+          </div><!-- /col -->
+
+          <!-- Right: floating stat card -->
+          <div class="col-lg-4 offset-lg-1 reveal">
+            <div class="hero-stat-card">
+              <div class="stat-row">
+                <div class="stat-icon-wrap">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                  <div class="stat-number">5,000+</div>
+                  <div class="stat-label">Students Enrolled</div>
+                </div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-icon-wrap">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                  <div class="stat-number">95%</div>
+                  <div class="stat-label">Success Rate</div>
+                </div>
+              </div>
+              <div class="stat-row">
+                <div class="stat-icon-wrap">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">Years Experience</div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /col -->
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </div><!-- /hero-content -->
+  </section><!-- /hero -->
+
+
+  <!-- =============================================
+       SECTION 3 — ABOUT
+  ============================================= -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Left: image -->
+        <div class="col-lg-5 reveal">
+          <div class="about-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800"
+              alt="EduReach Academy classroom"
+              loading="lazy"
+            />
+            <!-- Award badge -->
+            <div class="about-badge">
+              <i class="fa-solid fa-medal"></i>
+              <div class="badge-text">
+                <strong>Award Winning</strong>
+                <span>Institute since 2014</span>
+              </div>
+            </div>
+          </div>
+        </div><!-- /col -->
+
+        <!-- Right: content -->
+        <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0 reveal">
+          <span class="section-label">ABOUT US</span>
+          <h2 class="section-heading">
+            Shaping Futures Since <span class="amber-text">2014</span>
+          </h2>
+          <p class="mt-3" style="color:var(--text-gray);font-size:15px;line-height:1.75;">
+            EduReach Academy was founded with a single mission: to make quality
+            entrance exam coaching accessible to every student. Our expert faculty,
+            structured curriculum, and personalized approach have helped thousands
+            achieve their dream college admissions.
+          </p>
+
+          <!-- Feature rows -->
+          <div style="margin-top:28px;">
+
+            <div class="feature-row reveal">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="feature-title">Expert Faculty</div>
+                <div class="feature-desc">IIT and AIIMS alumni with 10+ years of teaching experience.</div>
+              </div>
+            </div>
+
+            <div class="feature-row reveal">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="feature-title">Small Batch Sizes</div>
+                <div class="feature-desc">Maximum 20 students per batch for personal attention.</div>
+              </div>
+            </div>
+
+            <div class="feature-row reveal">
+              <div class="feature-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <div class="feature-title">Proven Results</div>
+                <div class="feature-desc">95% success rate over the last 5 years.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <a href="#about" class="btn-amber-solid mt-4">Learn More About Us</a>
+        </div><!-- /col -->
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /about -->
+
+
+  <!-- =============================================
+       SECTION 4 — COURSES
+  ============================================= -->
+  <section id="courses">
+    <div class="container">
+
+      <div class="text-center mb-3 reveal">
+        <span class="center-section-label blue">OUR COURSES</span>
+        <h2 class="section-heading-lg">Programs We Offer</h2>
+        <p class="center-section-subtitle mt-2">
+          Choose from our expertly designed programmes built around top entrance exams.
+        </p>
+      </div>
+
+      <div class="row g-4 mt-2">
+
+        <!-- Card 1 — Medical -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="course-card card-red">
+            <div class="course-card-inner">
+              <div class="course-icon-wrap icon-bg-red">
+                <i class="fa-solid fa-heartbeat icon-red"></i>
+              </div>
+              <h4>Medical Entrance</h4>
+              <p>NEET preparation with biology, chemistry and physics focus.</p>
+              <span class="course-duration">12 Months</span>
+              <a href="#contact" class="btn-course btn-course-red">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 — Engineering -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="course-card card-blue">
+            <div class="course-card-inner">
+              <div class="course-icon-wrap icon-bg-blue">
+                <i class="fa-solid fa-cogs icon-blue"></i>
+              </div>
+              <h4>Engineering Entrance</h4>
+              <p>JEE Main and Advanced prep with math, physics and chemistry.</p>
+              <span class="course-duration">12 Months</span>
+              <a href="#contact" class="btn-course btn-course-blue">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 — Law -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="course-card card-green">
+            <div class="course-card-inner">
+              <div class="course-icon-wrap icon-bg-green">
+                <i class="fa-solid fa-scale-balanced icon-green"></i>
+              </div>
+              <h4>Law Entrance</h4>
+              <p>CLAT and AILET preparation covering legal reasoning and current affairs.</p>
+              <span class="course-duration">6 Months</span>
+              <a href="#contact" class="btn-course btn-course-green">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 — MBA -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="course-card card-orange">
+            <div class="course-card-inner">
+              <div class="course-icon-wrap icon-bg-orange">
+                <i class="fa-solid fa-chart-line icon-orange"></i>
+              </div>
+              <h4>MBA Entrance</h4>
+              <p>CAT, MAT and XAT prep with quant, verbal and DI sections.</p>
+              <span class="course-duration">6 Months</span>
+              <a href="#contact" class="btn-course btn-course-orange">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /courses -->
+
+
+  <!-- =============================================
+       SECTION 5 — WHY CHOOSE US
+  ============================================= -->
+  <section id="why">
+    <div class="container">
+
+      <div class="text-center mb-2 reveal">
+        <span class="center-section-label white">WHY CHOOSE US</span>
+        <h2 class="section-heading-lg" style="color:var(--white);">
+          The EduReach Advantage
+        </h2>
+      </div>
+
+      <div class="row g-4 mt-3">
+
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="why-box">
+            <div class="why-icon-wrap">
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+            <h5>Expert Faculty</h5>
+            <p>Experienced educators from premier institutions.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="why-box">
+            <div class="why-icon-wrap">
+              <i class="fa-solid fa-users-gear"></i>
+            </div>
+            <h5>Small Batches</h5>
+            <p>Personal attention with max 20 students per batch.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="why-box">
+            <div class="why-icon-wrap">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h5>Study Materials</h5>
+            <p>Comprehensive notes and practice papers included.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="why-box">
+            <div class="why-icon-wrap">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <h5>Mock Tests</h5>
+            <p>Weekly full length tests with detailed analysis.</p>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /why -->
+
+
+  <!-- =============================================
+       SECTION 6 — TESTIMONIALS
+  ============================================= -->
+  <section id="testimonials">
+    <div class="container">
+
+      <div class="text-center reveal">
+        <span class="center-section-label blue">TESTIMONIALS</span>
+        <h2 class="section-heading-lg">Student Success Stories</h2>
+      </div>
+
+      <div class="row g-4 mt-3">
+
+        <!-- Card 1 — Riya -->
+        <div class="col-lg-4 reveal">
+          <div class="testimonial-card">
+            <img
+              src="https://placehold.co/64x64/E8EAF6/1A237E?text=R"
+              alt="Riya Sharma"
+            />
+            <div>
+              <div class="student-name">Riya Sharma</div>
+              <div class="student-course">Medical Entrance</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "EduReach helped me crack NEET in my first attempt. The faculty is
+              incredibly supportive and the study materials are top notch."
+            </p>
+            <div class="testimonial-result">🏅 NEET AIR 4,231</div>
+          </div>
+        </div>
+
+        <!-- Card 2 — Arjun -->
+        <div class="col-lg-4 reveal">
+          <div class="testimonial-card">
+            <img
+              src="https://placehold.co/64x64/E8EAF6/1A237E?text=A"
+              alt="Arjun Mehta"
+            />
+            <div>
+              <div class="student-name">Arjun Mehta</div>
+              <div class="student-course">Engineering Entrance</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "I joined EduReach for JEE prep and the mock test series was a game
+              changer. Clear concepts, great faculty."
+            </p>
+            <div class="testimonial-result">🏅 JEE Main 98.4 Percentile</div>
+          </div>
+        </div>
+
+        <!-- Card 3 — Priya -->
+        <div class="col-lg-4 reveal">
+          <div class="testimonial-card">
+            <img
+              src="https://placehold.co/64x64/E8EAF6/1A237E?text=P"
+              alt="Priya Nair"
+            />
+            <div>
+              <div class="student-name">Priya Nair</div>
+              <div class="student-course">MBA Entrance</div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+              "The CAT coaching here is excellent. Small batch sizes mean you
+              actually get attention. Highly recommend."
+            </p>
+            <div class="testimonial-result">🏅 CAT 97th Percentile</div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /testimonials -->
+
+
+  <!-- =============================================
+       SECTION 7 — ENROLL FORM
+  ============================================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Left: copy -->
+        <div class="col-lg-5 reveal">
+          <span class="section-label">GET STARTED</span>
+          <h2 class="section-heading">
+            Start Your Journey<br>
+            Today<span class="amber-text">.</span>
+          </h2>
+          <p class="mt-3" style="color:var(--text-gray);font-size:15px;line-height:1.75;">
+            Take the first step towards your dream college. Fill out the form
+            and our counselor will contact you within 24 hours.
+          </p>
+
+          <div style="margin-top:32px;">
+            <div class="trust-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Free career counseling session</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>No obligation to enroll</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Speak to a real counselor</span>
+            </div>
+          </div>
+        </div><!-- /col -->
+
+        <!-- Right: form card -->
+        <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0 reveal">
+          <div class="enroll-form-card">
+            <h3><i class="fa-solid fa-pen-to-square me-2" style="color:var(--amber);"></i>Enroll Now</h3>
+
+            <form id="enrollForm" novalidate>
+
+              <div class="mb-3">
+                <label class="form-label" for="fullName">Full Name</label>
+                <input
+                  type="text" id="fullName" class="form-control"
+                  placeholder="Your full name" required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input
+                  type="tel" id="phone" class="form-control"
+                  placeholder="+91 98765 43210" required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" for="email">Email Address</label>
+                <input
+                  type="email" id="email" class="form-control"
+                  placeholder="you@email.com" required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="course">Course Interested In</label>
+                <select id="course" class="form-select" required>
+                  <option value="">Select a Course</option>
+                  <option value="medical">Medical Entrance</option>
+                  <option value="engineering">Engineering Entrance</option>
+                  <option value="law">Law Entrance</option>
+                  <option value="mba">MBA Entrance</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-submit" id="submitBtn">
+                Enroll Now — It's Free
+              </button>
+
+              <p class="form-secure mt-3">
+                <i class="fa-solid fa-shield-halved"></i>
+                Your information is 100% secure
+              </p>
+
+              <div class="form-success" id="formSuccess">
+                <i class="fa-solid fa-circle-check me-2"></i>
+                Thank you! Our counselor will reach out within 24 hours.
+              </div>
+
+            </form>
+          </div>
+        </div><!-- /col -->
+
+      </div><!-- /row -->
+    </div><!-- /container -->
+  </section><!-- /contact -->
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Col 1: brand + social -->
+        <div class="col-lg-4">
+          <a class="footer-logo d-flex align-items-center gap-2 text-decoration-none" href="#">
+            <i class="fa-solid fa-graduation-cap brand-icon" style="font-size:22px;"></i>
+            <span>
+              <span class="brand-name">EduReach</span>
+              <span class="brand-suffix"> Academy</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            Empowering students to crack entrance exams and secure admissions
+            to their dream colleges since 2014.
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div><!-- /col -->
+
+        <!-- Col 2: quick links -->
+        <div class="col-lg-2 col-md-4 col-6">
+          <h6 class="footer-heading">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div><!-- /col -->
+
+        <!-- Col 3: contact info -->
+        <div class="col-lg-4 offset-lg-2 col-md-8">
+          <h6 class="footer-heading">Contact Us</h6>
+          <div class="footer-contact-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>123 Education Lane, Delhi 110001</span>
+          </div>
+          <div class="footer-contact-row">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="footer-contact-row">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@edureachacademy.com</span>
+          </div>
+        </div><!-- /col -->
+
+      </div><!-- /row -->
+
+      <div class="footer-divider">
+        <p class="footer-copy">
+          &copy; 2024 EduReach Academy. All rights reserved. Designed with
+          <i class="fa-solid fa-heart" style="color:var(--amber);font-size:11px;"></i>
+          for aspiring students.
+        </p>
+      </div>
+
+    </div><!-- /container -->
+  </footer><!-- /footer -->
+
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* =============================================
+       NAVBAR — scroll behaviour
+    ============================================= */
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    });
+
+    /* =============================================
+       SMOOTH SCROLL — all anchor links
+    ============================================= */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = mainNav.offsetHeight + 8;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+
+          // Close mobile menu if open
+          const collapse = document.getElementById('navMenu');
+          if (collapse.classList.contains('show')) {
+            bootstrap.Collapse.getInstance(collapse)?.hide();
+          }
+        }
+      });
+    });
+
+    /* =============================================
+       INTERSECTION OBSERVER — fade-up reveals
+    ============================================= */
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {
+            // Stagger sibling cards slightly
+            const delay = (entry.target.dataset.delay || 0);
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, delay);
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    // Assign stagger delays to grid siblings
+    document.querySelectorAll('.row').forEach(row => {
+      const items = row.querySelectorAll('.reveal');
+      items.forEach((el, i) => {
+        el.dataset.delay = i * 90;
+      });
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* =============================================
+       FORM SUBMIT — success message
+    ============================================= */
+    document.getElementById('enrollForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const success = document.getElementById('formSuccess');
+
+      btn.disabled = true;
+      btn.textContent = 'Submitted!';
+      success.classList.add('show');
+
+      // Scroll success into view
+      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+
+</body>
+</html>
