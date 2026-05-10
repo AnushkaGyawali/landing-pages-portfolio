@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interested in this property? Leave your details and our agent will contact you within 24 hours." />
+  <title>NestFinder Realty — Property Enquiry</title>
+
+  <!-- Google Fonts: DM Sans + Work Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Work+Sans:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ─── CSS Variables ────────────────────────────────────────────── */
+    :root {
+      --bg:          #FFFFFF;
+      --green:       #1B5E20;
+      --green-light: #E8F5E9;
+      --green-hover: #145214;
+      --green-focus: rgba(27, 94, 32, 0.12);
+      --text-dark:   #212121;
+      --text-gray:   #757575;
+      --text-muted:  #9E9E9E;
+      --text-faint:  #BDBDBD;
+      --border:      #E0E0E0;
+      --border-soft: #F0F0F0;
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-img:  0 4px 12px rgba(0, 0, 0, 0.10);
+      --radius-sm:   8px;
+      --radius-md:   12px;
+      --radius-lg:   16px;
+      --error:       #D32F2F;
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      background: var(--bg);
+      min-height: 100vh;
+      /* Subtle texture overlay for depth */
+      background-image:
+        radial-gradient(ellipse 60% 40% at 50% -10%, rgba(27,94,32,0.04) 0%, transparent 70%);
+    }
+
+    /* ─── Page Container ───────────────────────────────────────────── */
+    .page-wrapper {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 24px;
+      min-height: 100vh;
+    }
+
+    /* ─── Top Bar ──────────────────────────────────────────────────── */
+    .top-bar {
+      padding-top: 32px;
+      padding-bottom: 24px;
+      text-align: center;
+      border-bottom: 1px solid var(--green-light);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .brand i {
+      font-size: 18px;
+      color: var(--green);
+    }
+
+    .brand-name {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: -0.01em;
+    }
+
+    /* ─── Hero Section ─────────────────────────────────────────────── */
+    .hero {
+      padding-top: 28px;
+      text-align: center;
+    }
+
+    .property-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-img);
+      display: block;
+    }
+
+    .hero-heading {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* ─── Shared Card Style ────────────────────────────────────────── */
+    .card {
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 28px 24px;
+      border: 1px solid var(--border-soft);
+      margin-top: 24px;
+    }
+
+    /* ─── Form Card ────────────────────────────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .field input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .field input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px var(--green-focus);
+    }
+
+    .field input.error {
+      border-color: var(--error);
+      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.10);
+      animation: shake 0.3s ease forwards;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .submit-btn:hover {
+      background: var(--green-hover);
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    .submit-btn .btn-icon {
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* Privacy note */
+    .privacy-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .privacy-note i {
+      font-size: 11px;
+    }
+
+    /* ─── Thank You Section ────────────────────────────────────────── */
+    #thankYouSection {
+      display: none;
+    }
+
+    #thankYouSection.visible {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .ty-inner {
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    /* Animated checkmark circle */
+    .check-circle {
+      width: 72px;
+      height: 72px;
+      background: var(--green-light);
+      border-radius: 50%;
+      margin: 0 auto 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.4s ease forwards;
+    }
+
+    .check-circle i {
+      font-size: 32px;
+      color: var(--green);
+    }
+
+    .ty-heading {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .ty-sub {
+      font-size: 15px;
+      color: var(--text-gray);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    /* Property details box */
+    .property-details {
+      background: #F9FBE7;
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 3px solid var(--green);
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      gap: 12px;
+    }
+
+    .detail-row:not(:last-child) {
+      border-bottom: 1px solid var(--green-light);
+    }
+
+    .detail-icon {
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .detail-icon i {
+      font-size: 14px;
+      color: var(--green);
+    }
+
+    .detail-label {
+      font-size: 12px;
+      color: var(--text-gray);
+      flex: 1;
+    }
+
+    .detail-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: right;
+    }
+
+    /* View More button */
+    .view-more-btn {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 28px;
+      border: 1.5px solid var(--green);
+      color: var(--green);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .view-more-btn:hover {
+      background: var(--green-light);
+    }
+
+    /* ─── Footer ───────────────────────────────────────────────────── */
+    .footer {
+      margin-top: 40px;
+      padding-bottom: 32px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    /* ─── Animations ───────────────────────────────────────────────── */
+
+    /* Shake for validation error */
+    @keyframes shake {
+      0%   { transform: translateX(0); }
+      25%  { transform: translateX(-6px); }
+      50%  { transform: translateX(6px); }
+      75%  { transform: translateX(-6px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Scale-in for checkmark */
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* Fade-in for thank you card */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Responsive polish ────────────────────────────────────────── */
+    @media (max-width: 360px) {
+      .hero-heading { font-size: 22px; }
+      .card { padding: 24px 18px; }
+      .ty-inner { padding: 32px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ── Top Bar ──────────────────────────────────────── -->
+    <header class="top-bar">
+      <a class="brand" href="#">
+        <i class="fa-solid fa-house"></i>
+        <span class="brand-name">NestFinder Realty</span>
+      </a>
+    </header>
+
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero">
+      <img
+        class="property-img"
+        src="assets/images/PropertyListing1.PNG"
+        alt="Property photo"
+      />
+      <h1 class="hero-heading">Interested in this property?</h1>
+      <p class="hero-sub">
+        Leave your details and our agent will contact<br>you within 24 hours.
+      </p>
+    </section>
+
+    <!-- ── Form Card ─────────────────────────────────────── -->
+    <section class="card" id="formSection">
+      <span class="section-label">Your Details</span>
+
+      <!-- Full Name -->
+      <div class="field">
+        <label for="inputName">Full Name</label>
+        <input
+          type="text"
+          id="inputName"
+          placeholder="John Smith"
+          autocomplete="name"
+        />
+      </div>
+
+      <!-- Phone Number -->
+      <div class="field">
+        <label for="inputPhone">Phone Number</label>
+        <input
+          type="tel"
+          id="inputPhone"
+          placeholder="+1 234 567 8900"
+          autocomplete="tel"
+        />
+      </div>
+
+      <!-- Email Address -->
+      <div class="field">
+        <label for="inputEmail">Email Address</label>
+        <input
+          type="email"
+          id="inputEmail"
+          placeholder="john@email.com"
+          autocomplete="email"
+        />
+      </div>
+
+      <!-- Submit -->
+      <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">
+        <span>Send My Details</span>
+        <i class="fa-solid fa-arrow-right btn-icon"></i>
+      </button>
+
+      <!-- Privacy note -->
+      <p class="privacy-note">
+        <i class="fa-solid fa-lock"></i>
+        We respect your privacy. No spam ever.
+      </p>
+    </section>
+
+    <!-- ── Thank You Section ──────────────────────────────── -->
+    <section class="card" id="thankYouSection">
+      <div class="ty-inner">
+
+        <!-- Animated checkmark -->
+        <div class="check-circle">
+          <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2 class="ty-heading">Thank You!</h2>
+        <p class="ty-sub">
+          Our agent will call you within 24 hours.<br>
+          Here are the property details:
+        </p>
+
+        <!-- Property details -->
+        <div class="property-details">
+          <div class="detail-row">
+            <span class="detail-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <span class="detail-label">Location</span>
+            <span class="detail-value">123 Maple Street, Austin TX</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon"><i class="fa-solid fa-tag"></i></span>
+            <span class="detail-label">Asking Price</span>
+            <span class="detail-value">$485,000</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon"><i class="fa-solid fa-bed"></i></span>
+            <span class="detail-label">Bedrooms</span>
+            <span class="detail-value">3 Bed / 2 Bath</span>
+          </div>
+        </div>
+
+        <!-- View More -->
+        <a class="view-more-btn" href="#">View More Properties</a>
+
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="footer">
+      NestFinder Realty &copy; 2025. Licensed Real Estate Agency.
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <script>
+    /* ── handleSubmit ──────────────────────────────────────────────── */
+    function handleSubmit() {
+      const nameEl  = document.getElementById('inputName');
+      const phoneEl = document.getElementById('inputPhone');
+      const emailEl = document.getElementById('inputEmail');
+
+      const fields = [nameEl, phoneEl, emailEl];
+      let hasError = false;
+
+      // Validate: flag empty fields
+      fields.forEach(function(el) {
+        if (!el.value.trim()) {
+          setError(el);
+          hasError = true;
+        }
+      });
+
+      if (hasError) return; // stop here if validation failed
+
+      // All fields filled — transition to thank-you state
+      const formSection = document.getElementById('formSection');
+      const thankYouSection = document.getElementById('thankYouSection');
+
+      formSection.style.display = 'none';
+      thankYouSection.classList.add('visible');
+
+      // Smooth scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ── setError: add red border + shake animation ─────────────────── */
+    function setError(el) {
+      el.classList.remove('error');             // reset to re-trigger animation
+      void el.offsetWidth;                      // force reflow
+      el.classList.add('error');
+    }
+
+    /* ── Clear errors on any input change ──────────────────────────── */
+    ['inputName', 'inputPhone', 'inputEmail'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function() {
+        this.classList.remove('error');
+        this.style.borderColor = '';
+        this.style.boxShadow  = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
