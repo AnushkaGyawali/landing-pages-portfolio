@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlexPack Co. — Flexible Packaging That Performs</title>
+  <meta name="description" content="FlexPack Co. delivers precision flexible packaging solutions trusted by 200+ businesses worldwide. Get a free custom quote today." />
+
+  <!-- Bootstrap 5 CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Font Awesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Barlow + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --primary:      #1C1C1E;
+      --accent:       #E65100;
+      --accent-dark:  #BF360C;
+      --accent-light: #FBE9E7;
+      --gray-bg:      #F5F5F5;
+      --text-dark:    #1C1C1E;
+      --text-gray:    #616161;
+      --border:       #E0E0E0;
+      --white:        #FFFFFF;
+    }
+
+    /* ============================================================
+       BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--text-dark);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .font-barlow {
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* ============================================================
+       SECTION LABELS
+    ============================================================ */
+    .section-label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #mainNav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid #EEEEEE;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    #mainNav.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.10);
+    }
+
+    .navbar-brand-text {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .navbar-brand-text span {
+      color: var(--accent);
+    }
+
+    .nav-link-custom {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      padding: 6px 4px;
+    }
+
+    .nav-link-custom:hover { color: var(--primary); }
+
+    .btn-nav-quote {
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      padding: 9px 20px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-nav-quote:hover {
+      background: var(--accent-dark);
+      color: var(--white);
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      min-height: 88vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: var(--primary);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28, 28, 30, 0.82);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 80px 0 60px;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      border: 1px solid rgba(230, 81, 0, 0.5);
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: rgba(255, 183, 77, 0.9);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 58px;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .hero-heading .accent { color: var(--accent); }
+
+    .hero-subtext {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.80);
+      line-height: 1.65;
+      margin-top: 16px;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-hero-primary {
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      padding: 14px 36px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+      display: inline-block;
+    }
+
+    .btn-hero-primary:hover {
+      background: var(--accent-dark);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+      border-radius: 4px;
+      padding: 13px 36px;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-hero-outline:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+    }
+
+    /* Hero Stats Card */
+    .hero-stats-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-stats-card .card-title {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-dark);
+      border-bottom: 1px solid #EEEEEE;
+      padding-bottom: 12px;
+      margin-bottom: 0;
+    }
+
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .stat-row:not(:last-child) {
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .stat-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-icon-wrap i {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .stat-number {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-gray);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       WHAT WE OFFER
+    ============================================================ */
+    #solutions {
+      background: var(--white);
+      padding: 90px 0;
+    }
+
+    .solution-card {
+      border: 1px solid #E8E8E8;
+      border-radius: 8px;
+      padding: 36px 28px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      height: 100%;
+    }
+
+    .solution-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(230, 81, 0, 0.10);
+      transform: translateY(-3px);
+    }
+
+    .sol-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sol-icon-wrap i {
+      color: var(--accent);
+      font-size: 26px;
+    }
+
+    .sol-title {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text-dark);
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+
+    .sol-desc {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-top: 10px;
+    }
+
+    .sol-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 16px;
+      transition: gap 0.2s ease;
+    }
+
+    .sol-link:hover {
+      color: var(--accent-dark);
+      gap: 9px;
+    }
+
+    /* ============================================================
+       WHY CHOOSE US
+    ============================================================ */
+    #why {
+      background: var(--gray-bg);
+      padding: 90px 0;
+    }
+
+    .why-img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+      object-fit: cover;
+    }
+
+    .why-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.15;
+      color: var(--text-dark);
+    }
+
+    .why-body {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .trust-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .trust-row i {
+      color: var(--accent);
+      font-size: 17px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust-row span {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .btn-sample {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      padding: 13px 30px;
+      text-decoration: none;
+      margin-top: 28px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-sample:hover {
+      background: var(--accent-dark);
+      color: var(--white);
+    }
+
+    /* ============================================================
+       INDUSTRIES
+    ============================================================ */
+    #industries {
+      background: var(--primary);
+      padding: 80px 0;
+    }
+
+    .industry-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+      color: var(--white);
+    }
+
+    .industry-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 32px;
+      text-align: center;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      cursor: default;
+    }
+
+    .industry-box:hover {
+      background: rgba(230, 81, 0, 0.12);
+      border-color: rgba(230, 81, 0, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .industry-box i {
+      font-size: 36px;
+      color: var(--white);
+    }
+
+    .industry-box .ind-label {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--white);
+      margin-top: 16px;
+    }
+
+    /* ============================================================
+       QUOTE FORM
+    ============================================================ */
+    #quote {
+      background: var(--white);
+      padding: 90px 0;
+    }
+
+    .quote-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+      color: var(--text-dark);
+    }
+
+    .quote-subtitle {
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.65;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      max-width: 680px;
+      margin: 40px auto 0;
+      border: 1px solid #E8E8E8;
+      border-radius: 8px;
+      padding: 48px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-control, .form-select {
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(230, 81, 0, 0.10);
+      outline: none;
+    }
+
+    .form-control::placeholder {
+      color: #AAAAAA;
+      font-size: 14px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 8px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: var(--accent-dark);
+    }
+
+    .btn-submit:disabled {
+      background: #9E9E9E;
+      cursor: not-allowed;
+    }
+
+    .trust-belt {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+
+    .trust-item i {
+      color: var(--text-gray);
+      font-size: 13px;
+    }
+
+    .form-success {
+      display: none;
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #A5D6A7;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: #111111;
+      padding: 56px 0 24px;
+    }
+
+    .footer-brand {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--white);
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    .footer-desc {
+      font-size: 14px;
+      color: #9E9E9E;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .footer-socials a {
+      color: #9E9E9E;
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-socials a:hover { color: var(--accent); }
+
+    .footer-heading {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li + li { margin-top: 10px; }
+
+    .footer-links a {
+      font-size: 14px;
+      color: #9E9E9E;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #9E9E9E;
+      margin-bottom: 12px;
+    }
+
+    .footer-contact-item i {
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .footer-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 40px;
+      padding-top: 24px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: #757575;
+      text-align: center;
+    }
+
+    /* ============================================================
+       FADE-UP ANIMATION (Intersection Observer)
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .delay-1 { transition-delay: 0.05s; }
+    .delay-2 { transition-delay: 0.15s; }
+    .delay-3 { transition-delay: 0.25s; }
+    .delay-4 { transition-delay: 0.35s; }
+    .delay-5 { transition-delay: 0.45s; }
+    .delay-6 { transition-delay: 0.55s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 991.98px) {
+      .hero-heading { font-size: 42px; }
+      .hero-stats-card { margin-top: 40px; }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero-heading { font-size: 34px; }
+      .hero-content { padding: 60px 0 48px; }
+      .hero-buttons { gap: 12px; }
+      .btn-hero-primary, .btn-hero-outline { padding: 12px 24px; font-size: 14px; }
+      .form-card { padding: 28px 20px; }
+      .quote-heading { font-size: 32px; }
+      .why-heading { font-size: 28px; }
+      .industry-heading { font-size: 32px; }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero-heading { font-size: 30px; }
+      .hero-buttons { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       SECTION 1: NAVBAR
+  ============================================================ -->
+  <nav id="mainNav" class="navbar navbar-expand-lg">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand-text me-4" href="#">
+        <i class="fa-solid fa-box" style="color: var(--accent); margin-right: 8px;"></i>FlexPack<span> Co.</span>
+      </a>
+
+      <!-- Mobile toggle -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars" style="color: var(--primary); font-size: 18px;"></i>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 py-3 py-lg-0">
+          <li class="nav-item"><a href="#solutions" class="nav-link-custom d-block py-2 py-lg-0">Solutions</a></li>
+          <li class="nav-item"><a href="#industries" class="nav-link-custom d-block py-2 py-lg-0">Industries</a></li>
+          <li class="nav-item"><a href="#why" class="nav-link-custom d-block py-2 py-lg-0">About</a></li>
+          <li class="nav-item"><a href="#quote" class="nav-link-custom d-block py-2 py-lg-0">Contact</a></li>
+          <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+            <a href="#quote" class="btn-nav-quote">Get a Free Quote</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 2: HERO
+    ============================================================ -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <!-- Left: copy -->
+            <div class="col-lg-7">
+              <span class="hero-pill">B2B Flexible Packaging Solutions</span>
+              <h1 class="hero-heading">
+                Flexible Packaging<br>
+                That<span class="accent"> Performs.</span>
+              </h1>
+              <p class="hero-subtext">
+                From custom printed pouches to laminated films, FlexPack Co. delivers precision packaging solutions trusted by 200+ businesses worldwide.
+              </p>
+              <div class="hero-buttons">
+                <a href="#quote" class="btn-hero-primary">Get a Free Quote</a>
+                <a href="#solutions" class="btn-hero-outline">View Solutions</a>
+              </div>
+            </div>
+
+            <!-- Right: stats card -->
+            <div class="col-lg-4 offset-lg-1 mt-5 mt-lg-0">
+              <div class="hero-stats-card">
+                <p class="card-title">Why FlexPack?</p>
+
+                <div class="stat-row">
+                  <div class="stat-icon-wrap">
+                    <i class="fa-solid fa-building"></i>
+                  </div>
+                  <div>
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">B2B Clients</div>
+                  </div>
+                </div>
+
+                <div class="stat-row">
+                  <div class="stat-icon-wrap">
+                    <i class="fa-solid fa-calendar-check"></i>
+                  </div>
+                  <div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years in Industry</div>
+                  </div>
+                </div>
+
+                <div class="stat-row">
+                  <div class="stat-icon-wrap">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                  </div>
+                  <div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Retention Rate</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /row -->
+        </div><!-- /container -->
+      </div><!-- /hero-content -->
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: WHAT WE OFFER
+    ============================================================ -->
+    <section id="solutions">
+      <div class="container">
+        <div class="text-center mb-2 fade-up">
+          <span class="section-label">What We Offer</span>
+          <h2 class="font-barlow fw-800" style="font-size:40px; color:var(--text-dark);">Our Packaging Solutions</h2>
+          <p style="font-size:16px; color:var(--text-gray); max-width:520px; margin:12px auto 50px;">Industrial-grade flexible packaging engineered to protect your product and elevate your brand across every channel.</p>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- Card 1 -->
+          <div class="col-lg-3 col-md-6 fade-up delay-1">
+            <div class="solution-card">
+              <div class="sol-icon-wrap">
+                <i class="fa-solid fa-shopping-bag"></i>
+              </div>
+              <h3 class="sol-title">Flexible Pouches</h3>
+              <p class="sol-desc">Stand-up pouches, flat pouches, and zipper bags customized to your product and brand.</p>
+              <a href="#quote" class="sol-link">Learn More <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-3 col-md-6 fade-up delay-2">
+            <div class="solution-card">
+              <div class="sol-icon-wrap">
+                <i class="fa-solid fa-ribbon"></i>
+              </div>
+              <h3 class="sol-title">Shrink Sleeves</h3>
+              <p class="sol-desc">Full body shrink sleeve labels with vibrant print for 360° brand visibility.</p>
+              <a href="#quote" class="sol-link">Learn More <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-3 col-md-6 fade-up delay-3">
+            <div class="solution-card">
+              <div class="sol-icon-wrap">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <h3 class="sol-title">Laminated Films</h3>
+              <p class="sol-desc">Multi-layer barrier films for food, pharma, and agricultural product protection.</p>
+              <a href="#quote" class="sol-link">Learn More <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-lg-3 col-md-6 fade-up delay-4">
+            <div class="solution-card">
+              <div class="sol-icon-wrap">
+                <i class="fa-solid fa-print"></i>
+              </div>
+              <h3 class="sol-title">Custom Print</h3>
+              <p class="sol-desc">High-definition flexographic and rotogravure printing on all packaging materials.</p>
+              <a href="#quote" class="sol-link">Learn More <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: WHY CHOOSE US
+    ============================================================ -->
+    <section id="why">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <!-- Left: image -->
+          <div class="col-lg-6 mb-5 mb-lg-0 fade-up">
+            <img
+              src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800"
+              alt="FlexPack Co. manufacturing facility"
+              class="why-img"
+            />
+          </div>
+
+          <!-- Right: content -->
+          <div class="col-lg-5 offset-lg-1 fade-up delay-2">
+            <span class="section-label">Why Choose Us</span>
+            <h2 class="why-heading">Quality You Can Trust. Packaging You Can Count On.</h2>
+            <p class="why-body">
+              For over 15 years, FlexPack Co. has been the trusted packaging partner for businesses across industries. We combine advanced manufacturing with responsive service to deliver on time, every time.
+            </p>
+
+            <div style="margin-top: 28px;">
+              <div class="trust-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>ISO 9001 Certified Manufacturing</span>
+              </div>
+              <div class="trust-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Food Safe and FDA Compliant Materials</span>
+              </div>
+              <div class="trust-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Custom Minimum Order Quantities</span>
+              </div>
+              <div class="trust-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>7 Day Sample Turnaround</span>
+              </div>
+              <div class="trust-row">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Dedicated Account Manager for Every Client</span>
+              </div>
+            </div>
+
+            <a href="#quote" class="btn-sample">Request a Sample Pack</a>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: INDUSTRIES WE SERVE
+    ============================================================ -->
+    <section id="industries">
+      <div class="container">
+        <div class="text-center fade-up">
+          <span class="section-label" style="color: rgba(255,183,77,0.85);">Industries We Serve</span>
+          <h2 class="industry-heading">Packaging for Every Sector</h2>
+        </div>
+
+        <div class="row g-3 mt-4" style="margin-top: 40px !important;">
+
+          <div class="col-lg-4 col-md-6 fade-up delay-1">
+            <div class="industry-box">
+              <i class="fa-solid fa-utensils"></i>
+              <span class="ind-label">Food &amp; Beverage</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 fade-up delay-2">
+            <div class="industry-box">
+              <i class="fa-solid fa-pills"></i>
+              <span class="ind-label">Pharmaceuticals</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 fade-up delay-3">
+            <div class="industry-box">
+              <i class="fa-solid fa-spa"></i>
+              <span class="ind-label">Personal Care</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 fade-up delay-4">
+            <div class="industry-box">
+              <i class="fa-solid fa-seedling"></i>
+              <span class="ind-label">Agriculture</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 fade-up delay-5">
+            <div class="industry-box">
+              <i class="fa-solid fa-microchip"></i>
+              <span class="ind-label">Electronics</span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 fade-up delay-6">
+            <div class="industry-box">
+              <i class="fa-solid fa-store"></i>
+              <span class="ind-label">Retail</span>
+            </div>
+          </div>
+
+        </div><!-- /row -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- ============================================================
+         SECTION 6: QUOTE FORM
+    ============================================================ -->
+    <section id="quote">
+      <div class="container">
+        <div class="text-center fade-up">
+          <span class="section-label">Get Started</span>
+          <h2 class="quote-heading">Get Your Free Quote</h2>
+          <p class="quote-subtitle">Fill in the form below and our team will send you a custom quote within 24 hours. No obligation.</p>
+        </div>
+
+        <div class="form-card fade-up delay-1">
+          <form id="quoteForm" novalidate>
+
+            <!-- Row 1 -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="companyName">Company Name <span style="color:var(--accent);">*</span></label>
+                <input type="text" id="companyName" class="form-control" placeholder="Your company name" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="contactName">Contact Name <span style="color:var(--accent);">*</span></label>
+                <input type="text" id="contactName" class="form-control" placeholder="Your full name" required />
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label" for="emailAddr">Email Address <span style="color:var(--accent);">*</span></label>
+                <input type="email" id="emailAddr" class="form-control" placeholder="your@company.com" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="phoneNum">Phone Number</label>
+                <input type="tel" id="phoneNum" class="form-control" placeholder="+1 (555) 000-0000" />
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="mb-3">
+              <label class="form-label" for="productType">Product Type <span style="color:var(--accent);">*</span></label>
+              <select id="productType" class="form-select" required>
+                <option value="" disabled selected>Select Product Type</option>
+                <option value="pouches">Flexible Pouches</option>
+                <option value="sleeves">Shrink Sleeves</option>
+                <option value="films">Laminated Films</option>
+                <option value="print">Custom Print</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="mb-3">
+              <label class="form-label" for="requirements">Additional Requirements <span style="color:var(--text-gray); font-weight:400;">(Optional)</span></label>
+              <textarea id="requirements" class="form-control" rows="4" placeholder="Tell us about your product, quantity requirements, and any special requests..."></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="submitBtn" class="btn-submit">
+              Request My Free Quote
+            </button>
+
+            <!-- Success message -->
+            <div id="formSuccess" class="form-success">
+              <i class="fa-solid fa-circle-check me-2"></i>
+              Thank you! We will contact you within 24 hours.
+            </div>
+
+            <!-- Trust belt -->
+            <div class="trust-belt">
+              <div class="trust-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>No spam ever</span>
+              </div>
+              <div class="trust-item">
+                <i class="fa-regular fa-clock"></i>
+                <span>Response within 24 hours</span>
+              </div>
+              <div class="trust-item">
+                <i class="fa-solid fa-lock"></i>
+                <span>Your data is secure</span>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div><!-- /container -->
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <i class="fa-solid fa-box me-2" style="color:var(--accent);"></i>FlexPack<span> Co.</span>
+          </div>
+          <p class="footer-desc">
+            Precision flexible packaging solutions for businesses worldwide. Trusted by 200+ clients across food, pharma, retail, and more.
+          </p>
+          <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Company links -->
+        <div class="col-lg-2 col-md-6 offset-lg-1">
+          <p class="footer-heading">Company</p>
+          <ul class="footer-links">
+            <li><a href="#why">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#quote">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact -->
+        <div class="col-lg-4 col-md-6 offset-lg-1">
+          <p class="footer-heading">Contact Us</p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+1 800 FLEXPACK</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>sales@flexpackco.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Chicago, IL, USA</span>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+
+      <div class="footer-divider">
+        <p class="footer-copy">&copy; 2024 FlexPack Co. All rights reserved. Flexible packaging solutions for the modern enterprise.</p>
+      </div>
+
+    </div><!-- /container -->
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============================================================
+       NAVBAR: Add shadow on scroll
+    ============================================================ */
+    const mainNav = document.getElementById('mainNav');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    /* ============================================================
+       SMOOTH SCROLL: All hash links (including Bootstrap collapse)
+    ============================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          // Close mobile nav if open
+          const navCollapse = document.getElementById('navMenu');
+          if (navCollapse && navCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+            if (bsCollapse) bsCollapse.hide();
+          }
+          const offset = mainNav.offsetHeight + 8;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* ============================================================
+       INTERSECTION OBSERVER: Fade-up animation
+    ============================================================ */
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    /* ============================================================
+       FORM: Validation + success state
+    ============================================================ */
+    const quoteForm  = document.getElementById('quoteForm');
+    const submitBtn  = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+
+    quoteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Required field check
+      const companyName = document.getElementById('companyName').value.trim();
+      const contactName = document.getElementById('contactName').value.trim();
+      const emailAddr   = document.getElementById('emailAddr').value.trim();
+      const productType = document.getElementById('productType').value;
+
+      // Simple validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!companyName || !contactName || !emailAddr || !productType) {
+        highlightEmpty();
+        return;
+      }
+
+      if (!emailRegex.test(emailAddr)) {
+        const emailInput = document.getElementById('emailAddr');
+        emailInput.style.borderColor = '#E53935';
+        emailInput.focus();
+        return;
+      }
+
+      // Success state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Quote Requested ✓';
+      formSuccess.style.display = 'block';
+
+      // Scroll success into view smoothly
+      setTimeout(() => {
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+
+    function highlightEmpty() {
+      const required = [
+        { id: 'companyName', val: () => document.getElementById('companyName').value.trim() },
+        { id: 'contactName', val: () => document.getElementById('contactName').value.trim() },
+        { id: 'emailAddr',   val: () => document.getElementById('emailAddr').value.trim() },
+        { id: 'productType', val: () => document.getElementById('productType').value },
+      ];
+
+      let firstEmpty = null;
+
+      required.forEach(field => {
+        const el = document.getElementById(field.id);
+        if (!field.val()) {
+          el.style.borderColor = '#E53935';
+          if (!firstEmpty) firstEmpty = el;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+
+      if (firstEmpty) firstEmpty.focus();
+    }
+
+    // Reset border color on input
+    ['companyName', 'contactName', 'emailAddr', 'productType'].forEach(id => {
+      document.getElementById(id).addEventListener('input', function () {
+        this.style.borderColor = '';
+      });
+    });
+  </script>
+
+</body>
+</html>
